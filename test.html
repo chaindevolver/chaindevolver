@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Popup Example</title>
+  <style>
+    /* Basic styling for the body */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    /* Popup container */
+    .popup-container {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Popup box */
+    .popup-box {
+      background: white;
+      width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Close button */
+    .close-btn {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Button to open popup */
+    .open-popup-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Error message */
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conditional Popup Example</h1>
+  <label for="inputField">Enter a digit:</label>
+  <input type="text" id="inputField" placeholder="Type a digit">
+  <button class="open-popup-btn" id="openPopup">Show Popup</button>
+
+  <p class="error-message" id="errorMessage">Please enter a valid digit.</p>
+
+  <!-- Popup Container -->
+  <div class="popup-container" id="popupContainer">
+    <div class="popup-box">
+      <h2>Success!</h2>
+      <p>You have entered a valid digit.</p>
+      <button class="close-btn" id="closePopup">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Get elements
+    const inputField = document.getElementById("inputField");
+    const popupContainer = document.getElementById("popupContainer");
+    const openPopupBtn = document.getElementById("openPopup");
+    const closePopupBtn = document.getElementById("closePopup");
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Open popup conditionally
+    openPopupBtn.addEventListener("click", () => {
+      const inputValue = inputField.value.trim(); // Get the value of the input field and trim spaces
+
+      if (/^\d+$/.test(inputValue)) {
+        // Check if the input contains only digits
+        popupContainer.style.display = "flex";
+        errorMessage.style.display = "none"; // Hide error message if valid
+      } else {
+        // Show error message if input is invalid
+        errorMessage.style.display = "block";
+      }
+    });
+
+    // Close popup
+    closePopupBtn.addEventListener("click", () => {
+      popupContainer.style.display = "none";
+    });
+
+    // Close popup when clicking outside the popup box
+    popupContainer.addEventListener("click", (e) => {
+      if (e.target === popupContainer) {
+        popupContainer.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

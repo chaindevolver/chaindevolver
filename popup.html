@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Example</title>
+  <style>
+    /* Basic styling for the body */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    /* Popup container */
+    .popup {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    /* Background overlay */
+    .popup-overlay {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    /* Close button */
+    .close-btn {
+      background: crimson;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    /* Open popup button */
+    .open-btn {
+      padding: 10px 20px;
+      background-color: royalblue;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Button to open the popup -->
+  <button class="open-btn" id="openPopup">Open Popup</button>
+
+  <!-- Background overlay -->
+  <div class="popup-overlay" id="popupOverlay"></div>
+
+  <!-- Popup content -->
+  <div class="popup" id="popup">
+    <h2>Popup Title</h2>
+    <p>This is a simple popup example!</p>
+    <button class="close-btn" id="closePopup">Close</button>
+  </div>
+
+  <script>
+    // Get elements
+    const popup = document.getElementById('popup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const openPopupBtn = document.getElementById('openPopup');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    // Open popup
+    openPopupBtn.addEventListener('click', () => {
+      popup.style.display = 'block';
+      popupOverlay.style.display = 'block';
+    });
+
+    // Close popup
+    closePopupBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+      popupOverlay.style.display = 'none';
+    });
+
+    // Close popup by clicking on the overlay
+    popupOverlay.addEventListener('click', () => {
+      popup.style.display = 'none';
+      popupOverlay.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
