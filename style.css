@@ -35,7 +35,7 @@ header{
 }
 
 #barContainer{
-    color: var(--white);
+    color: #3d51f2;
     font-size: 1.5rem;
     cursor: pointer;
 }
