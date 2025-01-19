@@ -1,6 +1,6 @@
 // script.js
 
-const correctCode = "7326"; // Replace this with your specific 4-digit code
+const correctCode = "1612"; // Replace this with your specific 4-digit code
 
 function checkCode() {
   const userCode = document.getElementById("codeInput").value;
